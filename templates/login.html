@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+    <title>Document</title>
+</head>
+<body>
+
+    <script  src="https://code.jquery.com/jquery-3.1.1.min.js"  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="  crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<div class="body">
+		<div class="veen">
+			<div class="login-btn splits">
+				<p>Login as Student</p>
+				<button class="active">Student</button>
+			</div>
+			<div class="rgstr-btn splits">
+				<p>Login as Admin</p>
+				<button>Admin</button>
+			</div>
+			<div class="wrapper">
+
+
+        		{% include 'includes/_messages.html' %}
+				{% from "includes/_formhelpers.html" import render_field %}
+				<form id="login" tabindex="500" method="POST" action="/studentLogin">
+                    <h3>Student</h3>
+					<div class="form-group">
+						{{render_field(form1.email, class_="form-control")}}
+					</div>
+					<div class="form-group">
+						{{render_field(form1.password, class_="form-control")}}
+					</div>
+					<div class="submit">
+						<button class="dark">Login</button>
+					</div>
+					<div>
+						If not already registered, <a href="/register">click here</a>.
+					</div>
+                </form>
+				
+				 <!--Doctor logging up form-->
+
+				<form id="register" tabindex="500" method="POST" action="/adminLogin">
+                    <h3>Admin</h3>
+					<div class="form-group">
+						{{render_field(form2.email, class_="form-control")}}
+					</div>
+					<div class="form-group">
+						{{render_field(form2.password, class_="form-control")}}
+					</div>
+					<div class="submit">
+						<button class="dark">Login</button>
+					</div>
+					<div>
+						If not already registered, <a href="/register">click here</a>.
+					</div>
+				</form>
+			</div>
+		</div>	
+	</div>
+    <script>
+
+		$(document).ready(function(){
+			var def = ".login-btn button";
+
+			if (!localStorage.getItem("log")) {
+				localStorage.setItem("log", ".login-btn button")
+			} else {
+				def = localStorage.getItem("log")
+      		}
+      
+			if (def === ".login-btn button") {
+				$('.veen .wrapper').addClass('move');
+				$('.body').css('background','#e0b722');
+				$(".veen .login-btn button").removeClass('active');
+				$(this).addClass('active');
+			} else if (def === ".rgstr-btn button") {
+				$('.veen .wrapper').removeClass('move');
+				$('.body').css('background','#ff4931');
+				$(".veen .rgstr-btn button").removeClass('active');
+				$(this).addClass('active');
+			}
+
+			$(".veen .rgstr-btn button").click(function(){
+				$('.veen .wrapper').addClass('move');
+				$('.body').css('background','#e0b722');
+				$(".veen .login-btn button").removeClass('active');
+				$(this).addClass('active');
+
+				localStorage.setItem("log", ".login-btn button")
+			});
+			$(".veen .login-btn button").click(function(){
+				$('.veen .wrapper').removeClass('move');
+				$('.body').css('background','#ff4931');
+				$(".veen .rgstr-btn button").removeClass('active');
+				$(this).addClass('active');
+
+				localStorage.setItem("log", ".rgstr-btn button")
+			});
+		});
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

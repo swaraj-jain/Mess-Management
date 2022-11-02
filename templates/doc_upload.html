@@ -1,0 +1,47 @@
+{% extends 'doc_layout.html' %}
+
+{% block body %}
+    <h1 style="text-align: center;">Patient's Dashboard</h1>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form method="POST" action="/doc_upload" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="report">Select report to upload:</label>
+                  <input type="file" class="form-control" id="report" aria-describedby="emailHelp" name="file">
+                </div>
+                <button type="submit" class="btn btn-secondary btn-lg btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div style="margin-top: 5%;">
+        <h2 style="text-align: center;">Patient's Old Reports</h2>
+        <br>
+        <div class="table-responsive-md">
+        <table class="table" style="text-align: center;">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Posted By</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Note</th>
+                    <th scope="col">Reports</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in pinfo['Reports'] %}
+                <tr>
+                    <td>{{ pinfo['Reports'][report]['Pushed by'] }}</td>
+                    <td>{{ pinfo['Reports'][report]['Date'] }}</td>
+                    <td>{{ pinfo['Reports'][report]['Time'] }}</td>
+                    <td>{{ pinfo['Reports'][report]['Note'] }}</td>
+                    <td><a target="_blank" href="{{ pinfo['Reports'][report]['Url'] }}"><button class="btn view_btn">View</button></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+{% endblock %}

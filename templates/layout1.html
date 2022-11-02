@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocPat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <style>
+        .dont_display{
+            display: none;
+        }
+        body{
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pds.css') }}" >
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" >
+</head>
+<body>
+    {% include 'includes/_navbar1.html' %}
+    <div class="container">
+        {% include 'includes/_messages.html' %}
+        {% block body %}{% endblock %}
+    </div>
+    <!--<script>
+        var give_acess_doctor_button=document.querySelector('#acess_to_doctor');
+        var dummy_text=document.querySelector('#dummy_text');
+        OTP=OTP
+        var text = document.createTextNode(OTP);
+        give_acess_doctor_button.onclick = (event) => {
+            dummy_text.appendChild(text);
+        }
+    </script>-->
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var dummy_text=document.querySelector('#dummy_text');
+        OTP = dummy_text.innerHTML;
+        if(OTP.length == 6) {
+            $.ajax({
+                type:'GET',
+                url: "{{ url_for( 'Delete_OTP' ) }}", //'/Delete_OTP',
+                data: JSON, //.stringify({'myId':bunchOfIds}),
+                contentType: "application/json",
+                success:function(response){ document.write(response);}
+            }).done
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    </script>
+</body>
+</html>

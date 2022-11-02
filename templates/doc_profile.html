@@ -1,0 +1,36 @@
+{% extends 'pat_layout.html' %}
+
+{% block body %}
+    <!--<h2>Dr. {{doctor['name']}}</h2>-->
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="image-preview">
+          <div id="imagePreview" style="background-image: url('{{doctor['profile_img']}}');">
+          </div>
+        </div>
+        <h2 style="text-align: center;">Dr. {{doctor['name']}}</h2>
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <h5 class="card-header" id="info_col">Specializes in: </h5>
+      <div class="card-body">
+        <p class="card-text">{{doctor["specialist"]}}</p>
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <h5 class="card-header" id="info_col">Address: </h5>
+      <div class="card-body">
+        <p class="card-text">{{doctor["address"]["city"]}}, {{doctor["address"]["state"]}} - {{doctor["address"]["pincode"]}}</p>
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <h5 class="card-header" id="info_col">Email: </h5>
+      <div class="card-body">
+        <p class="card-text">{{doctor["email"]}}</p>
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'pat_layout.html' %}
+
+{% block body %}
+    <!--<form action="/pat_upload" method="POST" enctype="multipart/form-data">
+        <p>Upload</p>
+        <label>Select files:</label>
+        <input type="file" name="files" multiple><br><br>
+        <button type="btn btn-primary">Submit</button>
+    </form>
+    -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <form action="/pat_upload" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="report">Select report to upload:</label>
+                  <input type="file" class="form-control" id="report" aria-describedby="emailHelp" name="files" multiple>
+                </div>
+                <div class="form-group">
+                    <label for="Note">Note : </label>
+                    <input type="text" class="form-control" id="Note" name="Note">
+                </div>
+                <button type="submit" class="btn btn-secondary btn-lg btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

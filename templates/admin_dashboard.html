@@ -1,0 +1,20 @@
+{% extends 'admin_layout.html' %}
+
+{% block body %}
+    <h1 id="Dashboard_heading"> Dashboard</h1>
+    <hr>
+    <br>
+    <div class="card">
+      <h5 class="card-header features">Access a patient</h5>
+      <div class="card-body">
+        <p class="card-text">You will be able to view their previous reports and add one report of your own.</p>
+        <form action="/DocAccPatOTPVerify" method="POST">
+          <div class="form-group">
+              <label for="p_otp">Enter patient OTP: </label>
+              <input type="text" class="form-control" id="p_otp" placeholder="6 Digit Pin" name="OTP">
+          </div>
+          <button class="btn btn_feature" id="access_to_doctor">Access Patient Report</button>
+        </form>
+      </div>
+    </div>
+{% endblock %}
