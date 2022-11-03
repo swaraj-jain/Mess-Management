@@ -123,14 +123,14 @@ body {
   .view_btn {
     background-color: #4f5f9f;
     border-color: #4f5f9f;
-    width: 70%;
+    width: 40%;
     color: floralwhite;
   }
 
   .view_btn:hover {
     background-color: #222d58;
     border-color: #222d58;
-    width: 70%;
+    width: 40%;
     color: floralwhite;
   }
 

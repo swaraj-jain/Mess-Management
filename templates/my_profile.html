@@ -1,48 +1,43 @@
-{% extends 'doc_layout.html' %}
+{% extends 'admin_layout.html' %}
 
 {% block body %}
     <br>
 
 
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-3" style="align-items: center;">
         <div class="image-preview">
-          <div id="imagePreview" style="background-image: url('{{doctor['profile_img']}}');">
+        <div id="imagePreview" style="background-image: url('static/swaraj.jpg');">
           </div>
         </div>
-        <h2 style="text-align: center;">Dr. {{doctor['name']}}</h2>
+        <h2 style="text-align: center;">{{admin['name']}}</h2>
       </div>
     </div>
     <br>
 
     <div class="card">
-      <h5 class="card-header" id="info_col">Specializes in: </h5>
+      <h5 class="card-header" id="info_col">Hostel: </h5>
       <div class="card-body">
-        <p class="card-text">{{doctor["specialist"]}}</p>
+        <p class="card-text">{{admin["Hostel"]}}</p>
       </div>
     </div>
     <br>
-    <div class="card">
-      <h5 class="card-header" id="info_col">Address: </h5>
-      <div class="card-body">
-            {%if doctor["address"]["city"] + "," + doctor["address"]["state"] + "-" + doctor["address"]["pincode"] == ",-" %}
-                <p class="card-text"></p>
-            {%else%}
-                <p class="card-text">{{doctor["address"]["city"]}}, {{doctor["address"]["state"]}} - {{doctor["address"]["pincode"]}}</p>
-            {%endif%}
-
-      </div>
-    </div>
+    
     <br>
     <div class="card">
       <h5 class="card-header" id="info_col">Email: </h5>
       <div class="card-body">
-        <p class="card-text">{{doctor["email"]}}</p>
+        <p class="card-text">{{admin["email"]}}</p>
       </div>
     </div>
     <br>
 
-    <form action="/update_my_profile" method="GET">
-      <button class="btn" id="update">Update your profile</button>
-    </form>
+    <div class="card">
+      <h5 class="card-header" id="info_col">Phone no: </h5>
+      <div class="card-body">
+        <p class="card-text">{{admin["Ph Number"]}}</p>
+      </div>
+    </div>
+    <br>
+
 {% endblock %}

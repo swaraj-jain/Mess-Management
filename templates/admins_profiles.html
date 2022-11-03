@@ -1,0 +1,34 @@
+{% extends 'student_layout.html' %}
+
+{% block body %}
+
+    <div style="margin-top: 5%;">
+        <h2 style="text-align: center;">Stored Reports</h2>
+        <br>
+        <div class="table-responsive-md">
+        <table class="table" style="text-align: center;">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Hostel </th>
+                    <th scope="col">Mess Incharge</th>
+                    <th scope="col">View</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in  admins%}
+                <tr>
+                    <td>{{  admins[x]['Hostel']}}</td>
+                    <td>{{ admins[x]['name'] }}</td>
+                    <td>
+                        <form method="GET" action="/admins_profile/{{x}}">
+                            <button type="submit" class="btn view_btn ">View Profile</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+{% endblock %}

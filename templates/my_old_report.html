@@ -1,4 +1,4 @@
-{% extends 'pat_layout.html' %}
+{% extends 'student_layout.html' %}
 
 {% block body %}
 
@@ -9,26 +9,19 @@
         <table class="table" style="text-align: center;">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Posted By</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Note</th>
-                    <th scope="col">View Report</th>
+                    <th scope="col">Breakfast</th>
+                    <th scope="col">Lunch</th>
+                    <th scope="col">Dinner</th>
                 </tr>
             </thead>
             <tbody>
-                {% for report in pinfo['Reports'] %}
+                {% for x in  pinfo%}
                 <tr>
-                    {% if  pinfo['Reports'][report]['Pushed by']  == "User" %}
-                        <td>{{ pinfo['Reports'][report]['Pushed by'] }}</td>
-                    {% endif %}
-                    {% if  pinfo['Reports'][report]['Pushed by']  != "User" %}
-                        <td>Dr. {{ pinfo['Reports'][report]['Pushed by'] }}</td>
-                    {% endif %}
-                    <td>{{ pinfo['Reports'][report]['Date'] }}</td>
-                    <td>{{ pinfo['Reports'][report]['Time'] }}</td>
-                    <td>{{ pinfo['Reports'][report]['Note'] }}</td>
-                    <td><a target="_blank" href="{{ pinfo['Reports'][report]['Url'] }}"><button class="btn view_btn">View</button></a></td>
+                    <td>{{  x['date']}}</td>
+                    <td>{{ x['breakfast'] }}</td>
+                    <td>{{ x['lunch'] }}</td>
+                    <td>{{ x['dinner'] }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

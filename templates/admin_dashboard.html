@@ -1,20 +1,32 @@
 {% extends 'admin_layout.html' %}
 
 {% block body %}
-    <h1 id="Dashboard_heading"> Dashboard</h1>
-    <hr>
-    <br>
-    <div class="card">
-      <h5 class="card-header features">Access a patient</h5>
-      <div class="card-body">
-        <p class="card-text">You will be able to view their previous reports and add one report of your own.</p>
-        <form action="/DocAccPatOTPVerify" method="POST">
-          <div class="form-group">
-              <label for="p_otp">Enter patient OTP: </label>
-              <input type="text" class="form-control" id="p_otp" placeholder="6 Digit Pin" name="OTP">
-          </div>
-          <button class="btn btn_feature" id="access_to_doctor">Access Patient Report</button>
-        </form>
+    <!--<h1 id="Dashboard_heading"> Dashboard</h1>
+    <hr>-->
+    <div style="margin-top: 5%;">
+      <h2 style="text-align: center;">Count of Student Skiping Meals</h2>
+      <br>
+      <div class="table-responsive-md">
+      <table class="table" style="text-align: center;">
+          <thead class="thead-dark">
+              <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Breakfast</th>
+                  <th scope="col">Lunch</th>
+                  <th scope="col">Dinner</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for x in  pinfo%}
+              <tr>
+                  <td>{{  x['date']}}</td>
+                  <td>{{ x['breakfast'] }}</td>
+                  <td>{{ x['lunch'] }}</td>
+                  <td>{{ x['dinner'] }}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
       </div>
-    </div>
+  </div>
 {% endblock %}

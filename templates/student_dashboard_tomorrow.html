@@ -1,0 +1,48 @@
+{% extends 'student_layout.html' %}
+
+
+{% block body %}
+    <h1 id="Dashboard_heading">Today : {{cur_date}}</h1>
+    <hr>
+
+    <div class="card">
+      <h5 class="card-header features">Skip Breakfast</h5>
+      <div class="card-body">
+        <!--<p class="card-text">They will be able to view your previous report and a add one report of their own.</p>-->
+        <form method="POST" action="/skip/breakfast/{{cur_date}}" style="margin-bottom:0;">
+          <textarea type="text" class="form-control" placeholder="Reason" name="reason"></textarea>
+          <br>
+          <button class="btn btn_feature">Skip Breakfast</button>
+        </form>
+      </div>
+    </div>
+    <br>
+
+    <div class="card">
+      <h5 class="card-header features">Skip Lunch</h5>
+      <div class="card-body">
+        <!--<p class="card-text">They will be able to view your previous report and a add one report of their own.</p>-->
+        <form method="POST" action="/skip/lunch/{{cur_date}}" style="margin-bottom:0;">
+          <textarea type="text" class="form-control" placeholder="Reason" name="reason"></textarea>
+          <br>
+          <button class="btn btn_feature">Skip Lunch</button>
+        </form>
+      </div>
+    </div>
+    <br>
+
+    <div class="card">
+      <h5 class="card-header features">Skip Dinner</h5>
+      <div class="card-body">
+        <!--<p class="card-text">They will be able to view your previous report and a add one report of their own.</p>-->
+        <form method="POST" action="/skip/dinner/{{cur_date}}" style="margin-bottom:0;">
+          <textarea type="text" class="form-control" placeholder="Reason" name="reason"></textarea>
+          <br>
+          <button class="btn btn_feature">Skip Dinner</button>
+        </form>
+      </div>
+    </div>
+    <br>
+
+
+{% endblock %}

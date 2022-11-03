@@ -3,7 +3,7 @@
 <header class="site-header">
   <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="background-color: #0e273c;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/doc_dashboard">DocPat</a>
+      <a class="navbar-brand" href="/admin_dashboard">Messcom</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -13,10 +13,7 @@
             <a class="nav-link" href="/my_profile" id="logout">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/doc_dashboard" id="Home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/my_given_oldreport" id="Old">Old reports</a>
+            <a class="nav-link" aria-current="page" href="/admin_dashboard" id="Home">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout" id="logout">Logout</a>
@@ -32,7 +29,7 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="dropdown">
               <li><a class="dropdown-item" href="/my_profile">Your Profile</a></li>
               <li><a class="dropdown-item" href="/logout">Logout</a></li>
-              <li><a class="dropdown-item" href="#" id="unique">Dr. {{session.username}}</a></li>
+              <li><a class="dropdown-item" href="#" id="unique">{{session.username}}</a></li>
             </ul>
           </li>
         </ul>

@@ -1,0 +1,45 @@
+{% extends 'student_layout.html' %}
+
+
+{% block body %}
+<br>
+
+
+<div class="row">
+  <div class="col-md-3" style="align-items: center;">
+    <div class="image-preview">
+    <div id="imagePreview" style="background-image: url('static/swaraj.jpg');">
+      </div>
+    </div>
+    <h2 style="text-align: center;">{{admin['name']}}</h2>
+  </div>
+</div>
+<br>
+
+<div class="card">
+  <h5 class="card-header" id="info_col">Hostel: </h5>
+  <div class="card-body">
+    <p class="card-text">{{admin["Hostel"]}}</p>
+  </div>
+</div>
+<br>
+
+<br>
+<div class="card">
+  <h5 class="card-header" id="info_col">Email: </h5>
+  <div class="card-body">
+    <p class="card-text">{{admin["email"]}}</p>
+  </div>
+</div>
+<br>
+
+<div class="card">
+  <h5 class="card-header" id="info_col">Phone no: </h5>
+  <div class="card-body">
+    <p class="card-text">{{admin["Ph Number"]}}</p>
+  </div>
+</div>
+<br>
+
+
+{% endblock %}
