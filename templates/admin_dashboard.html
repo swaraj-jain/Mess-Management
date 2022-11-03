@@ -6,6 +6,25 @@
     <div style="margin-top: 5%;">
       <h2 style="text-align: center;">Count of Student Skiping Meals</h2>
       <br>
+      <hr>
+        <form id="doc_search">
+            <div class="form-group" style="display: flex; justify-content: space-around;">
+            <div>
+                <label class="form-label">Date: </label>
+                <input type="text" class="form-control" id="filterInput" placeholder="1-31" onkeyup="searchinfo()">
+            </div>  
+            <div>
+                <label class="form-label">Month: </label>
+                <input type="text" class="form-control" id="filterInput1" placeholder="1-12" onkeyup="searchinfo()">
+            </div>
+            <div>
+                <label class="form-label">Year: </label>
+                <input type="text" class="form-control" id="filterInput2" placeholder="2000-2022" onkeyup="searchinfo()">
+            </div>
+            </div>
+        </form>
+        <hr>
+      <br>
       <div class="table-responsive-md">
       <table class="table" style="text-align: center;">
           <thead class="thead-dark">
@@ -16,7 +35,7 @@
                   <th scope="col">Dinner</th>
               </tr>
           </thead>
-          <tbody>
+          <tbody id="rTable">
               {% for x in  pinfo%}
               <tr>
                   <td>{{  x['date']}}</td>
@@ -29,4 +48,50 @@
       </table>
       </div>
   </div>
+
+  <script>
+    const searchinfo = () => {
+        let filter=document.getElementById('filterInput').value.toUpperCase();
+        let filter1=document.getElementById('filterInput1').value.toUpperCase();
+        let filter2=document.getElementById('filterInput2').value.toUpperCase();
+
+        let t_body = document.getElementById('rTable');
+        let d_info=  t_body.getElementsByTagName('tr');
+        for (var i=0 ; i<d_info.length ; i++)
+        {
+            var t_n = d_info[i].getElementsByTagName('td')[0];
+            var t_name = (t_n.textContent||t_n.innerHTML);
+
+            year = "",month = "",date = ""
+            for(var j=0;j<4;j++) year+=t_name[j];
+            var m_start = 5;
+            if (t_name[m_start]  == '0') m_start+=1;
+            for(var j=m_start;j<7;j++) month+=t_name[j];
+
+            var d_start = 8;
+            if (t_name[d_start]  == '0') d_start+=1;
+            for(var j=d_start;j<10;j++) date+=t_name[j];
+
+            var all_s = 1, dis = 0;
+
+            if(filter.length==0 && filter1.length==0 && filter2.length==0) d_info[i].style.display = '';
+            else
+            {
+                var dis = 1;
+                console.log(filter2 != year)
+                if(filter2.length && filter2 != year) dis = 0;
+                if(filter1.length && filter1 != month) dis = 0;
+                if(filter.length && filter != date) dis = 0;
+
+                console.log(dis)
+                if(dis)  d_info[i].style.display = '';
+                else  d_info[i].style.display = 'none';
+                
+            }
+
+        }
+    }
+</script>
+
+
 {% endblock %}
